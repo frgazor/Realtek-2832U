@@ -26,7 +26,14 @@ namespace RadioLib
         protected RadioBase()
         {
             filterGraph = (IFilterGraph2)new FilterGraph();
-            AddSourceFilter();
+            try
+            {
+                AddSourceFilter();
+            }
+            catch (NullReferenceException e)
+            { 
+                throw new NullReferenceException(e.Message);
+            }
         }
 
         protected IMediaControl MediaControl

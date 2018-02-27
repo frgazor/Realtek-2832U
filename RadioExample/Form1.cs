@@ -10,18 +10,33 @@ namespace RadioExample
         private FmRadio controller;
 
         private Interval currentInterval;
-        private bool rdsEnabled = false;
+        private bool rdsEnabled = true;
+
+        private int smallChangeValue = 50;
+        private int trackValue;
+        private bool blockRecursion = false;
 
         public Form1()
         {
             InitializeComponent();
-            fmRadioGraph = new FmRadioGraph();
-            controller = fmRadioGraph.RadioControl;
-            SetCheckboxState();
+            try
+            {
+                fmRadioGraph = new FmRadioGraph();
+                controller = fmRadioGraph.RadioControl;
+                SetCheckboxState();
 
-            searchIntervalComboBox.SelectedIndex = 1;
-            bandwidthDropdown.SelectedIndex = 0;
-            controller.AudioSampleRate = SampleRate.High;
+                searchIntervalComboBox.SelectedIndex = 1;
+                bandwidthDropdown.SelectedIndex = 0;
+                controller.AudioSampleRate = SampleRate.High;
+
+                rdsEnabled = true;
+                controller.EnableRadioData = true;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            lblStationName.Text = "";
         }
 
         private void SetCheckboxState()
@@ -35,17 +50,6 @@ namespace RadioExample
                 blendCheckBox.Checked = true;
             if (quality.HasFlag(QualityControl.StereoSwitch))
                 switchCheckBox.Checked = true;
-        }
-
-        private void playButton_Click(object sender, EventArgs e)
-        {
-            controller.Frequency = controller.Frequency;
-            fmRadioGraph.Play();
-        }
-
-        private void stopButton_Click(object sender, EventArgs e)
-        {
-            fmRadioGraph.Stop();
         }
 
         private void deemphasisCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -86,18 +90,22 @@ namespace RadioExample
             var currentFrequency = 87500; //controller.TunerRange.LowRange;
             if (frequencyTextBox.Text != string.Empty)
                 currentFrequency = int.Parse(frequencyTextBox.Text) + (int) currentInterval;
+            lblStationName.Text = "scanning...";
             var result = controller.Scan(currentFrequency, currentInterval, Direction.Forwards, (uint)scanStopQuality.Value, (int)numberSearches.Value);
             if (result.HasValue)
             {
                 frequencyTextBox.Text = result.Value.Frequency.ToString();
                 signalQualityTextBox.Text = result.Value.Quality.ToString();
                 controller.Frequency = result.Value.Frequency;
+                trackBarFrequency.Value = result.Value.Frequency;
+                setFrequencyLabel();
             }
             else
             {
                 MessageBox.Show("Scan found no results.\r\nAdjust scan quality or number of searches.", "Scan Failed",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            lblStationName.Text = "";
         }
 
         private void scanBackwards_Click(object sender, EventArgs e)
@@ -105,18 +113,22 @@ namespace RadioExample
             var currentFrequency = 108000; //controller.TunerRange.HighRange;
             if (frequencyTextBox.Text != string.Empty)
                 currentFrequency = int.Parse(frequencyTextBox.Text) + (int)currentInterval;
+            lblStationName.Text = "scanning...";
             var result = controller.Scan(currentFrequency, currentInterval, Direction.Backwards, (uint)scanStopQuality.Value, (int)numberSearches.Value);
             if (result.HasValue)
             {
                 frequencyTextBox.Text = result.Value.Frequency.ToString();
                 signalQualityTextBox.Text = result.Value.Quality.ToString();
                 controller.Frequency = result.Value.Frequency;
+                trackBarFrequency.Value = result.Value.Frequency;
+                setFrequencyLabel();
             }
             else
             {
                 MessageBox.Show("Scan found no results.\r\nAdjust scan quality or number of searches.", "Scan Failed",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            lblStationName.Text = "";
         }
 
         private void bandwidthDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -125,24 +137,6 @@ namespace RadioExample
                 controller.AudioSampleRate = SampleRate.High;
             else
                 controller.AudioSampleRate = SampleRate.Low;
-        }
-
-        private void updateButton_Click(object sender, EventArgs e)
-        {
-            var information = controller.AudioInformation;
-            sampleRateTextBox.Text = information.SampleRate.ToString();
-            bitRateTextBox.Text = information.BitsPerSample.ToString();
-            audioStereoCheckBox.Checked = information.IsStereo;
-
-            isStereoCheckBox.Checked = controller.IsStereo;
-            rdsSyncCheckBox.Checked = controller.RadioDataSync;
-            signalLockCheckBox.Checked = controller.SignalLock;
-
-            signalQualityTextBox.Text = controller.SignalQuality.ToString();
-            rdsQualityTextBox.Text = controller.RadioDataQuality.ToString();
-
-            UpdateRadioData();
-            UpdateRange();
         }
 
         private void UpdateRange()
@@ -166,6 +160,7 @@ namespace RadioExample
             musicCheckBox.Checked = radioData.IsMusic;
             rdsStereoCheckBox.Checked = radioData.IsStereo;
             programmeTextBox.Text = radioData.ProgrammeService;
+            lblStationName.Text = radioData.ProgrammeService;
             trafficInformationTextBox.Text = radioData.TrafficIndicator;
             typeTextBox.Text = radioData.Type.ToString();
             dynamicCheckBox.Checked = radioData.DynamicProgrammeType;
@@ -205,18 +200,113 @@ namespace RadioExample
             controller.Frequency = setFrequency;
         }
 
-        private void rdsButton_Click(object sender, EventArgs e)
-        {
-            rdsEnabled = true;
-            controller.EnableRadioData = true;
-        }
-
         private void updateRdsControl_Click(object sender, EventArgs e)
         {
             if (!rdsEnabled)
                 return;
             var control = new RadioDataControl(errorCorrectionCheckBox.Checked, (uint) errorThreshold.Value);
             controller.RadioDataControl = control;
+        }
+
+        private void trackBarFrequency_Scroll(object sender, EventArgs e)
+        {
+            setFrequencyLabel();
+        }
+
+        private void trackBarFrequency_ValueChanged(object sender, EventArgs e)
+        {
+            if (blockRecursion) return;
+
+            trackValue = trackBarFrequency.Value;
+
+            if (trackValue % smallChangeValue != 0)
+            {
+                trackValue = (trackValue / smallChangeValue) * smallChangeValue;
+
+                blockRecursion = true;
+
+                trackBarFrequency.Value = trackValue;
+
+                blockRecursion = false;
+
+                setFrequencyLabel();
+            }
+
+        }
+
+        private void setFrequencyLabel()
+        {
+            String freq = "" + trackBarFrequency.Value;
+            int freqSize = freq.Length;
+            if (freqSize == 5)
+            {
+                freq = freq.Substring(0, 2) + "." + freq.Substring(2, 3);
+            }
+            else
+            {
+                freq = freq.Substring(0, 3) + "." + freq.Substring(3, 3);
+            }
+            lblFrequency.Text = freq;
+        }
+
+        private void checkBoxPlayStop_CheckedChanged(object sender, EventArgs e)
+        {
+            if(((CheckBox)sender).Checked)
+            {
+                controller.Frequency = controller.Frequency;
+                fmRadioGraph.Play();
+                timerInfoUpdate.Start();
+            }
+            else
+            {
+                fmRadioGraph.Stop();
+                timerInfoUpdate.Stop();
+            }
+        }
+
+        private void checkBoxRDS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((CheckBox)sender).Checked)
+            {
+                rdsEnabled = true;
+                controller.EnableRadioData = true;
+            }
+            else
+            {
+                rdsEnabled = false;
+                controller.EnableRadioData = false;
+                lblStationName.Text = "";
+            }
+        }
+
+        private void trackBarFrequency_MouseUp(object sender, MouseEventArgs e)
+        {
+            controller.Frequency = trackBarFrequency.Value;
+        }
+
+        private void timerInfoUpdate_Tick(object sender, EventArgs e)
+        {
+            if (checkBoxPlayStop.Checked)
+                if (checkBoxRDS.Checked)
+                    updateInfos();
+        }
+
+        private void updateInfos()
+        {
+            var information = controller.AudioInformation;
+            sampleRateTextBox.Text = information.SampleRate.ToString();
+            bitRateTextBox.Text = information.BitsPerSample.ToString();
+            audioStereoCheckBox.Checked = information.IsStereo;
+
+            isStereoCheckBox.Checked = controller.IsStereo;
+            rdsSyncCheckBox.Checked = controller.RadioDataSync;
+            signalLockCheckBox.Checked = controller.SignalLock;
+
+            signalQualityTextBox.Text = controller.SignalQuality.ToString();
+            rdsQualityTextBox.Text = controller.RadioDataQuality.ToString();
+
+            UpdateRadioData();
+            UpdateRange();
         }
     }
 }
