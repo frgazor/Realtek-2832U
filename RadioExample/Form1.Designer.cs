@@ -50,7 +50,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblStationName = new System.Windows.Forms.Label();
-            this.lblFrequency = new System.Windows.Forms.Label();
             this.trackBarFrequency = new System.Windows.Forms.TrackBar();
             this.tabPageAdvanced = new System.Windows.Forms.TabPage();
             this.updateRdsControl = new System.Windows.Forms.Button();
@@ -99,6 +98,7 @@
             this.checkBoxPlayStop = new System.Windows.Forms.CheckBox();
             this.checkBoxRDS = new System.Windows.Forms.CheckBox();
             this.timerInfoUpdate = new System.Windows.Forms.Timer(this.components);
+            this.digitalDisplayFrequency = new Owf.Controls.DigitalDisplayControl();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -282,10 +282,10 @@
             // 
             // tabPageRadio
             // 
+            this.tabPageRadio.Controls.Add(this.digitalDisplayFrequency);
             this.tabPageRadio.Controls.Add(this.button2);
             this.tabPageRadio.Controls.Add(this.button1);
             this.tabPageRadio.Controls.Add(this.lblStationName);
-            this.tabPageRadio.Controls.Add(this.lblFrequency);
             this.tabPageRadio.Controls.Add(this.trackBarFrequency);
             this.tabPageRadio.Location = new System.Drawing.Point(4, 22);
             this.tabPageRadio.Name = "tabPageRadio";
@@ -325,18 +325,6 @@
             this.lblStationName.TabIndex = 2;
             this.lblStationName.Text = "Station name";
             this.lblStationName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblFrequency
-            // 
-            this.lblFrequency.BackColor = System.Drawing.Color.Black;
-            this.lblFrequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
-            this.lblFrequency.ForeColor = System.Drawing.Color.Lime;
-            this.lblFrequency.Location = new System.Drawing.Point(3, 43);
-            this.lblFrequency.Name = "lblFrequency";
-            this.lblFrequency.Size = new System.Drawing.Size(645, 127);
-            this.lblFrequency.TabIndex = 1;
-            this.lblFrequency.Text = "87.500";
-            this.lblFrequency.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // trackBarFrequency
             // 
@@ -857,6 +845,16 @@
             this.timerInfoUpdate.Interval = 2000;
             this.timerInfoUpdate.Tick += new System.EventHandler(this.timerInfoUpdate_Tick);
             // 
+            // digitalDisplayFrequency
+            // 
+            this.digitalDisplayFrequency.BackColor = System.Drawing.Color.Black;
+            this.digitalDisplayFrequency.DigitColor = System.Drawing.Color.GreenYellow;
+            this.digitalDisplayFrequency.DigitText = "088.888";
+            this.digitalDisplayFrequency.Location = new System.Drawing.Point(3, 41);
+            this.digitalDisplayFrequency.Name = "digitalDisplayFrequency";
+            this.digitalDisplayFrequency.Size = new System.Drawing.Size(645, 126);
+            this.digitalDisplayFrequency.TabIndex = 63;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -875,6 +873,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Radio Test App";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -961,13 +960,13 @@
         private System.Windows.Forms.TextBox secondAlternateFrequencyTextBox;
         private System.Windows.Forms.TabPage tabPageRadio;
         private System.Windows.Forms.TrackBar trackBarFrequency;
-        private System.Windows.Forms.Label lblFrequency;
         private System.Windows.Forms.CheckBox checkBoxPlayStop;
         private System.Windows.Forms.CheckBox checkBoxRDS;
         private System.Windows.Forms.Label lblStationName;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timerInfoUpdate;
+        private Owf.Controls.DigitalDisplayControl digitalDisplayFrequency;
     }
 }
 

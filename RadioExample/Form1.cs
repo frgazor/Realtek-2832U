@@ -21,6 +21,10 @@ namespace RadioExample
             InitializeComponent();
             try
             {
+                int frequency = Properties.Settings.Default.selectedFrequency;
+                trackBarFrequency.Value = frequency;
+                setFrequencyLabel();
+
                 fmRadioGraph = new FmRadioGraph();
                 controller = fmRadioGraph.RadioControl;
                 SetCheckboxState();
@@ -31,6 +35,8 @@ namespace RadioExample
 
                 rdsEnabled = true;
                 controller.EnableRadioData = true;
+
+                controller.Frequency = frequency;
             }
             catch(Exception e)
             {
@@ -198,6 +204,8 @@ namespace RadioExample
             }
             
             controller.Frequency = setFrequency;
+            trackBarFrequency.Value = setFrequency;
+            setFrequencyLabel();
         }
 
         private void updateRdsControl_Click(object sender, EventArgs e)
@@ -210,6 +218,7 @@ namespace RadioExample
 
         private void trackBarFrequency_Scroll(object sender, EventArgs e)
         {
+            lblStationName.Text = "";
             setFrequencyLabel();
         }
 
@@ -246,7 +255,9 @@ namespace RadioExample
             {
                 freq = freq.Substring(0, 3) + "." + freq.Substring(3, 3);
             }
-            lblFrequency.Text = freq;
+            if (trackBarFrequency.Value < 100000)
+                freq = "0" + freq;
+            digitalDisplayFrequency.DigitText = freq;
         }
 
         private void checkBoxPlayStop_CheckedChanged(object sender, EventArgs e)
@@ -307,6 +318,12 @@ namespace RadioExample
 
             UpdateRadioData();
             UpdateRange();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.selectedFrequency = trackBarFrequency.Value;
+            Properties.Settings.Default.Save();
         }
     }
 }
