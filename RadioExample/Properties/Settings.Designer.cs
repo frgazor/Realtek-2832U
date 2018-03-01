@@ -34,5 +34,125 @@ namespace RadioExample.Properties {
                 this["selectedFrequency"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("88900")]
+        public int station1 {
+            get {
+                return ((int)(this["station1"]));
+            }
+            set {
+                this["station1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("97600")]
+        public int station2 {
+            get {
+                return ((int)(this["station2"]));
+            }
+            set {
+                this["station2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("106600")]
+        public int station3 {
+            get {
+                return ((int)(this["station3"]));
+            }
+            set {
+                this["station3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("87500")]
+        public int station4 {
+            get {
+                return ((int)(this["station4"]));
+            }
+            set {
+                this["station4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("108000")]
+        public int station5 {
+            get {
+                return ((int)(this["station5"]));
+            }
+            set {
+                this["station5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("108000")]
+        public int station6 {
+            get {
+                return ((int)(this["station6"]));
+            }
+            set {
+                this["station6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("108000")]
+        public int station7 {
+            get {
+                return ((int)(this["station7"]));
+            }
+            set {
+                this["station7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("108000")]
+        public int station8 {
+            get {
+                return ((int)(this["station8"]));
+            }
+            set {
+                this["station8"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("108000")]
+        public int station9 {
+            get {
+                return ((int)(this["station9"]));
+            }
+            set {
+                this["station9"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("108000")]
+        public int station10 {
+            get {
+                return ((int)(this["station10"]));
+            }
+            set {
+                this["station10"] = value;
+            }
+        }
     }
 }

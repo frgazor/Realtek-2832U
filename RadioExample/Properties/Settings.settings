@@ -5,5 +5,35 @@
     <Setting Name="selectedFrequency" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">88900</Value>
     </Setting>
+    <Setting Name="station1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">88900</Value>
+    </Setting>
+    <Setting Name="station2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">97600</Value>
+    </Setting>
+    <Setting Name="station3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">106600</Value>
+    </Setting>
+    <Setting Name="station4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">87500</Value>
+    </Setting>
+    <Setting Name="station5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">108000</Value>
+    </Setting>
+    <Setting Name="station6" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">108000</Value>
+    </Setting>
+    <Setting Name="station7" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">108000</Value>
+    </Setting>
+    <Setting Name="station8" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">108000</Value>
+    </Setting>
+    <Setting Name="station9" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">108000</Value>
+    </Setting>
+    <Setting Name="station10" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">108000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -293,6 +293,7 @@ namespace RadioExample
         private void trackBarFrequency_MouseUp(object sender, MouseEventArgs e)
         {
             controller.Frequency = trackBarFrequency.Value;
+            lblStationName.Text = "";
         }
 
         private void timerInfoUpdate_Tick(object sender, EventArgs e)
@@ -324,6 +325,177 @@ namespace RadioExample
         {
             Properties.Settings.Default.selectedFrequency = trackBarFrequency.Value;
             Properties.Settings.Default.Save();
+        }
+
+
+        private void btnStation1_Click(object sender, EventArgs e)
+        {
+            if(checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station1 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station1;
+                trackBarFrequency.Value = Properties.Settings.Default.station1;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation2_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station2 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station2;
+                trackBarFrequency.Value = Properties.Settings.Default.station2;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation3_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station3 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station3;
+                trackBarFrequency.Value = Properties.Settings.Default.station3;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation4_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station4 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station4;
+                trackBarFrequency.Value = Properties.Settings.Default.station4;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation5_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station5 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station5;
+                trackBarFrequency.Value = Properties.Settings.Default.station5;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation6_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station6 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station6;
+                trackBarFrequency.Value = Properties.Settings.Default.station6;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation7_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station7 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station7;
+                trackBarFrequency.Value = Properties.Settings.Default.station7;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation8_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station8 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station8;
+                trackBarFrequency.Value = Properties.Settings.Default.station8;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation9_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station9 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station9;
+                trackBarFrequency.Value = Properties.Settings.Default.station9;
+                setFrequencyLabel();
+            }
+        }
+
+        private void btnStation10_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSave.Checked)
+            {
+                Properties.Settings.Default.station10 = trackBarFrequency.Value;
+                Properties.Settings.Default.Save();
+                checkBoxSave.Checked = false;
+            }
+            else
+            {
+                lblStationName.Text = "";
+                controller.Frequency = Properties.Settings.Default.station10;
+                trackBarFrequency.Value = Properties.Settings.Default.station10;
+                setFrequencyLabel();
+            }
         }
     }
 }
