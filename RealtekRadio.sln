@@ -1,11 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectShowLib-2008", "DirectShowLib\DirectShowLib-2008.csproj", "{CE009BFA-5EF6-4153-B2A1-2FA79698A9AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioLib", "RadioLib\RadioLib.csproj", "{BE4D8C09-7E3F-4BBC-8BFA-8599604B5D5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioExample", "RadioExample\RadioExample.csproj", "{8A37E728-2551-4944-AD6D-9D6133F400B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioApp", "RadioApp\RadioApp.csproj", "{8A37E728-2551-4944-AD6D-9D6133F400B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DABRadioExample", "DABRadioExample\DABRadioExample.csproj", "{AAC836ED-73D8-45AB-BD7F-265C439FB10E}"
 EndProject
@@ -72,5 +74,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8DC8AF7-F492-40D9-93D2-A9A190C1321A}
 	EndGlobalSection
 EndGlobal

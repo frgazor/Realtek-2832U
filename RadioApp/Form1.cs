@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using RadioLib;
 
-namespace RadioExample
+namespace RadioApp
 {
     public partial class Form1 : Form
     {
@@ -16,11 +16,15 @@ namespace RadioExample
         private int trackValue;
         private bool blockRecursion = false;
 
+        private bool isRDSSync = false;
         public Form1()
         {
             InitializeComponent();
             try
             {
+                pictureBoxStereo.Visible = false;
+                pictureBoxRDS.Visible = false;
+
                 int frequency = Properties.Settings.Default.selectedFrequency;
                 trackBarFrequency.Value = frequency;
                 setFrequencyLabel();
@@ -101,7 +105,8 @@ namespace RadioExample
             if (result.HasValue)
             {
                 frequencyTextBox.Text = result.Value.Frequency.ToString();
-                signalQualityTextBox.Text = result.Value.Quality.ToString();
+                //signalQualityTextBox.Text = result.Value.Quality.ToString();
+                progressBarSQ.Value = result.Value.Quality;
                 controller.Frequency = result.Value.Frequency;
                 trackBarFrequency.Value = result.Value.Frequency;
                 setFrequencyLabel();
@@ -124,7 +129,8 @@ namespace RadioExample
             if (result.HasValue)
             {
                 frequencyTextBox.Text = result.Value.Frequency.ToString();
-                signalQualityTextBox.Text = result.Value.Quality.ToString();
+                //signalQualityTextBox.Text = result.Value.Quality.ToString();
+                progressBarSQ.Value = result.Value.Quality;
                 controller.Frequency = result.Value.Frequency;
                 trackBarFrequency.Value = result.Value.Frequency;
                 setFrequencyLabel();
@@ -148,8 +154,8 @@ namespace RadioExample
         private void UpdateRange()
         {
             var range = controller.TunerRange;
-            lowestFrequencyTextBox.Text = range.LowRange.ToString();
-            highestFrequencyTextBox.Text = range.HighRange.ToString();
+            //lowestFrequencyTextBox.Text = range.LowRange.ToString();
+            //highestFrequencyTextBox.Text = range.HighRange.ToString();
         }
 
         private void UpdateRadioData()
@@ -166,7 +172,10 @@ namespace RadioExample
             musicCheckBox.Checked = radioData.IsMusic;
             rdsStereoCheckBox.Checked = radioData.IsStereo;
             programmeTextBox.Text = radioData.ProgrammeService;
-            lblStationName.Text = radioData.ProgrammeService;
+            if (isRDSSync)
+                lblStationName.Text = radioData.ProgrammeService;
+            else
+                lblStationName.Text = "";
             trafficInformationTextBox.Text = radioData.TrafficIndicator;
             typeTextBox.Text = radioData.Type.ToString();
             dynamicCheckBox.Checked = radioData.DynamicProgrammeType;
@@ -306,15 +315,37 @@ namespace RadioExample
         private void updateInfos()
         {
             var information = controller.AudioInformation;
-            sampleRateTextBox.Text = information.SampleRate.ToString();
-            bitRateTextBox.Text = information.BitsPerSample.ToString();
-            audioStereoCheckBox.Checked = information.IsStereo;
+            //sampleRateTextBox.Text = information.SampleRate.ToString();
+            //bitRateTextBox.Text = information.BitsPerSample.ToString();
+            //audioStereoCheckBox.Checked = information.IsStereo;
 
-            isStereoCheckBox.Checked = controller.IsStereo;
-            rdsSyncCheckBox.Checked = controller.RadioDataSync;
+            if(controller.IsStereo)
+            {
+                pictureBoxStereo.Visible = true;
+            }
+            else
+            {
+                pictureBoxStereo.Visible = false;
+            }
+
+            if(controller.RadioDataSync)
+            {
+                isRDSSync = true;
+                pictureBoxRDS.Visible = true;
+            }
+            else
+            {
+                isRDSSync = false;
+                pictureBoxRDS.Visible = false;
+            }
+
+
+            //isStereoCheckBox.Checked = controller.IsStereo;
+            //rdsSyncCheckBox.Checked = controller.RadioDataSync;
             signalLockCheckBox.Checked = controller.SignalLock;
 
-            signalQualityTextBox.Text = controller.SignalQuality.ToString();
+            //signalQualityTextBox.Text = controller.SignalQuality.ToString();
+            progressBarSQ.Value = controller.SignalQuality;
             rdsQualityTextBox.Text = controller.RadioDataQuality.ToString();
 
             UpdateRadioData();

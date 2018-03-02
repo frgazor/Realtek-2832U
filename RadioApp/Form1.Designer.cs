@@ -1,4 +1,4 @@
-﻿namespace RadioExample
+﻿namespace RadioApp
 {
     partial class Form1
     {
@@ -29,22 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.signalLockCheckBox = new System.Windows.Forms.CheckBox();
-            this.signalQualityTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.isStereoCheckBox = new System.Windows.Forms.CheckBox();
-            this.rdsSyncCheckBox = new System.Windows.Forms.CheckBox();
-            this.audioStereoCheckBox = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.sampleRateTextBox = new System.Windows.Forms.TextBox();
-            this.bitRateTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lowestFrequencyTextBox = new System.Windows.Forms.TextBox();
-            this.highestFrequencyTextBox = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageRadio = new System.Windows.Forms.TabPage();
             this.checkBoxSave = new System.Windows.Forms.CheckBox();
@@ -110,8 +97,10 @@
             this.checkBoxPlayStop = new System.Windows.Forms.CheckBox();
             this.checkBoxRDS = new System.Windows.Forms.CheckBox();
             this.timerInfoUpdate = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.progressBarSQ = new System.Windows.Forms.ProgressBar();
+            this.pictureBoxStereo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRDS = new System.Windows.Forms.PictureBox();
+            this.panelDisplay = new System.Windows.Forms.Panel();
             this.tabControl.SuspendLayout();
             this.tabPageRadio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFrequency)).BeginInit();
@@ -121,164 +110,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.numberSearches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scanStopQuality)).BeginInit();
             this.tabPageRDS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStereo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRDS)).BeginInit();
             this.SuspendLayout();
             // 
             // signalLockCheckBox
             // 
             this.signalLockCheckBox.AutoCheck = false;
             this.signalLockCheckBox.AutoSize = true;
-            this.signalLockCheckBox.Location = new System.Drawing.Point(6, 19);
+            this.signalLockCheckBox.Location = new System.Drawing.Point(358, 258);
             this.signalLockCheckBox.Name = "signalLockCheckBox";
             this.signalLockCheckBox.Size = new System.Drawing.Size(82, 17);
             this.signalLockCheckBox.TabIndex = 15;
             this.signalLockCheckBox.Text = "Signal Lock";
             this.signalLockCheckBox.UseVisualStyleBackColor = true;
             // 
-            // signalQualityTextBox
-            // 
-            this.signalQualityTextBox.Location = new System.Drawing.Point(97, 94);
-            this.signalQualityTextBox.Name = "signalQualityTextBox";
-            this.signalQualityTextBox.ReadOnly = true;
-            this.signalQualityTextBox.Size = new System.Drawing.Size(123, 20);
-            this.signalQualityTextBox.TabIndex = 16;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 97);
+            this.label4.Location = new System.Drawing.Point(446, 259);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 17;
             this.label4.Text = "Signal Quality";
-            // 
-            // isStereoCheckBox
-            // 
-            this.isStereoCheckBox.AutoCheck = false;
-            this.isStereoCheckBox.AutoSize = true;
-            this.isStereoCheckBox.Location = new System.Drawing.Point(6, 44);
-            this.isStereoCheckBox.Name = "isStereoCheckBox";
-            this.isStereoCheckBox.Size = new System.Drawing.Size(57, 17);
-            this.isStereoCheckBox.TabIndex = 20;
-            this.isStereoCheckBox.Text = "Stereo";
-            this.isStereoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // rdsSyncCheckBox
-            // 
-            this.rdsSyncCheckBox.AutoCheck = false;
-            this.rdsSyncCheckBox.AutoSize = true;
-            this.rdsSyncCheckBox.Location = new System.Drawing.Point(6, 71);
-            this.rdsSyncCheckBox.Name = "rdsSyncCheckBox";
-            this.rdsSyncCheckBox.Size = new System.Drawing.Size(76, 17);
-            this.rdsSyncCheckBox.TabIndex = 21;
-            this.rdsSyncCheckBox.Text = "RDS Sync";
-            this.rdsSyncCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // audioStereoCheckBox
-            // 
-            this.audioStereoCheckBox.AutoCheck = false;
-            this.audioStereoCheckBox.AutoSize = true;
-            this.audioStereoCheckBox.Location = new System.Drawing.Point(97, 73);
-            this.audioStereoCheckBox.Name = "audioStereoCheckBox";
-            this.audioStereoCheckBox.Size = new System.Drawing.Size(57, 17);
-            this.audioStereoCheckBox.TabIndex = 22;
-            this.audioStereoCheckBox.Text = "Stereo";
-            this.audioStereoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Sample Rate";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 13);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "Bits per Sample";
-            // 
-            // sampleRateTextBox
-            // 
-            this.sampleRateTextBox.Location = new System.Drawing.Point(97, 17);
-            this.sampleRateTextBox.Name = "sampleRateTextBox";
-            this.sampleRateTextBox.ReadOnly = true;
-            this.sampleRateTextBox.Size = new System.Drawing.Size(123, 20);
-            this.sampleRateTextBox.TabIndex = 25;
-            // 
-            // bitRateTextBox
-            // 
-            this.bitRateTextBox.Location = new System.Drawing.Point(97, 43);
-            this.bitRateTextBox.Name = "bitRateTextBox";
-            this.bitRateTextBox.ReadOnly = true;
-            this.bitRateTextBox.Size = new System.Drawing.Size(123, 20);
-            this.bitRateTextBox.TabIndex = 26;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.signalLockCheckBox);
-            this.groupBox1.Controls.Add(this.isStereoCheckBox);
-            this.groupBox1.Controls.Add(this.rdsSyncCheckBox);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.signalQualityTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(4, 254);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(226, 125);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Signal Information";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.audioStereoCheckBox);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.bitRateTextBox);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.sampleRateTextBox);
-            this.groupBox2.Location = new System.Drawing.Point(236, 254);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(226, 103);
-            this.groupBox2.TabIndex = 28;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Audio Information";
-            // 
-            // lowestFrequencyTextBox
-            // 
-            this.lowestFrequencyTextBox.Location = new System.Drawing.Point(571, 251);
-            this.lowestFrequencyTextBox.Name = "lowestFrequencyTextBox";
-            this.lowestFrequencyTextBox.ReadOnly = true;
-            this.lowestFrequencyTextBox.Size = new System.Drawing.Size(71, 20);
-            this.lowestFrequencyTextBox.TabIndex = 50;
-            // 
-            // highestFrequencyTextBox
-            // 
-            this.highestFrequencyTextBox.Location = new System.Drawing.Point(570, 277);
-            this.highestFrequencyTextBox.Name = "highestFrequencyTextBox";
-            this.highestFrequencyTextBox.ReadOnly = true;
-            this.highestFrequencyTextBox.Size = new System.Drawing.Size(72, 20);
-            this.highestFrequencyTextBox.TabIndex = 51;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(468, 254);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 13);
-            this.label16.TabIndex = 52;
-            this.label16.Text = "Lowest Frequency";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(468, 277);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(96, 13);
-            this.label17.TabIndex = 53;
-            this.label17.Text = "Highest Frequency";
             // 
             // tabControl
             // 
@@ -293,6 +147,8 @@
             // 
             // tabPageRadio
             // 
+            this.tabPageRadio.Controls.Add(this.pictureBoxRDS);
+            this.tabPageRadio.Controls.Add(this.pictureBoxStereo);
             this.tabPageRadio.Controls.Add(this.checkBoxSave);
             this.tabPageRadio.Controls.Add(this.btnStation10);
             this.tabPageRadio.Controls.Add(this.btnStation9);
@@ -309,6 +165,7 @@
             this.tabPageRadio.Controls.Add(this.button1);
             this.tabPageRadio.Controls.Add(this.lblStationName);
             this.tabPageRadio.Controls.Add(this.trackBarFrequency);
+            this.tabPageRadio.Controls.Add(this.panelDisplay);
             this.tabPageRadio.Location = new System.Drawing.Point(4, 22);
             this.tabPageRadio.Name = "tabPageRadio";
             this.tabPageRadio.Size = new System.Drawing.Size(651, 221);
@@ -461,13 +318,13 @@
             // 
             this.lblStationName.BackColor = System.Drawing.Color.Black;
             this.lblStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblStationName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblStationName.Location = new System.Drawing.Point(3, 0);
+            this.lblStationName.ForeColor = System.Drawing.Color.GreenYellow;
+            this.lblStationName.Location = new System.Drawing.Point(23, 0);
             this.lblStationName.Name = "lblStationName";
-            this.lblStationName.Size = new System.Drawing.Size(510, 43);
+            this.lblStationName.Size = new System.Drawing.Size(343, 43);
             this.lblStationName.TabIndex = 2;
             this.lblStationName.Text = "Station name";
-            this.lblStationName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStationName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // trackBarFrequency
             // 
@@ -962,7 +819,7 @@
             // checkBoxPlayStop
             // 
             this.checkBoxPlayStop.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxPlayStop.Location = new System.Drawing.Point(4, 385);
+            this.checkBoxPlayStop.Location = new System.Drawing.Point(7, 254);
             this.checkBoxPlayStop.Name = "checkBoxPlayStop";
             this.checkBoxPlayStop.Size = new System.Drawing.Size(90, 23);
             this.checkBoxPlayStop.TabIndex = 61;
@@ -975,11 +832,11 @@
             this.checkBoxRDS.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBoxRDS.Checked = true;
             this.checkBoxRDS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRDS.Location = new System.Drawing.Point(101, 385);
+            this.checkBoxRDS.Location = new System.Drawing.Point(103, 254);
             this.checkBoxRDS.Name = "checkBoxRDS";
             this.checkBoxRDS.Size = new System.Drawing.Size(90, 23);
             this.checkBoxRDS.TabIndex = 62;
-            this.checkBoxRDS.Text = "RDS ON / OFF";
+            this.checkBoxRDS.Text = "RDS";
             this.checkBoxRDS.UseVisualStyleBackColor = true;
             this.checkBoxRDS.CheckedChanged += new System.EventHandler(this.checkBoxRDS_CheckedChanged);
             // 
@@ -988,29 +845,61 @@
             this.timerInfoUpdate.Interval = 2000;
             this.timerInfoUpdate.Tick += new System.EventHandler(this.timerInfoUpdate_Tick);
             // 
+            // progressBarSQ
+            // 
+            this.progressBarSQ.Location = new System.Drawing.Point(530, 260);
+            this.progressBarSQ.Name = "progressBarSQ";
+            this.progressBarSQ.Size = new System.Drawing.Size(122, 17);
+            this.progressBarSQ.TabIndex = 63;
+            // 
+            // pictureBoxStereo
+            // 
+            this.pictureBoxStereo.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxStereo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxStereo.Image")));
+            this.pictureBoxStereo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxStereo.InitialImage")));
+            this.pictureBoxStereo.Location = new System.Drawing.Point(435, 3);
+            this.pictureBoxStereo.Name = "pictureBoxStereo";
+            this.pictureBoxStereo.Size = new System.Drawing.Size(54, 38);
+            this.pictureBoxStereo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxStereo.TabIndex = 80;
+            this.pictureBoxStereo.TabStop = false;
+            // 
+            // pictureBoxRDS
+            // 
+            this.pictureBoxRDS.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxRDS.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRDS.Image")));
+            this.pictureBoxRDS.Location = new System.Drawing.Point(388, 0);
+            this.pictureBoxRDS.Name = "pictureBoxRDS";
+            this.pictureBoxRDS.Size = new System.Drawing.Size(41, 43);
+            this.pictureBoxRDS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRDS.TabIndex = 81;
+            this.pictureBoxRDS.TabStop = false;
+            // 
+            // panelDisplay
+            // 
+            this.panelDisplay.BackColor = System.Drawing.Color.Black;
+            this.panelDisplay.Location = new System.Drawing.Point(0, 0);
+            this.panelDisplay.Name = "panelDisplay";
+            this.panelDisplay.Size = new System.Drawing.Size(513, 167);
+            this.panelDisplay.TabIndex = 82;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 414);
+            this.ClientSize = new System.Drawing.Size(656, 281);
+            this.Controls.Add(this.progressBarSQ);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.signalLockCheckBox);
             this.Controls.Add(this.checkBoxRDS);
             this.Controls.Add(this.checkBoxPlayStop);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.highestFrequencyTextBox);
-            this.Controls.Add(this.lowestFrequencyTextBox);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Radio App";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPageRadio.ResumeLayout(false);
             this.tabPageRadio.PerformLayout();
@@ -1024,6 +913,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.scanStopQuality)).EndInit();
             this.tabPageRDS.ResumeLayout(false);
             this.tabPageRDS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStereo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRDS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1031,21 +922,7 @@
 
         #endregion
         private System.Windows.Forms.CheckBox signalLockCheckBox;
-        private System.Windows.Forms.TextBox signalQualityTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox isStereoCheckBox;
-        private System.Windows.Forms.CheckBox rdsSyncCheckBox;
-        private System.Windows.Forms.CheckBox audioStereoCheckBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox sampleRateTextBox;
-        private System.Windows.Forms.TextBox bitRateTextBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox lowestFrequencyTextBox;
-        private System.Windows.Forms.TextBox highestFrequencyTextBox;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageAdvanced;
         private System.Windows.Forms.Button updateRdsControl;
@@ -1111,6 +988,10 @@
         private System.Windows.Forms.Button btnStation3;
         private System.Windows.Forms.Button btnStation2;
         private System.Windows.Forms.Button btnStation1;
+        private System.Windows.Forms.ProgressBar progressBarSQ;
+        private System.Windows.Forms.PictureBox pictureBoxStereo;
+        private System.Windows.Forms.PictureBox pictureBoxRDS;
+        private System.Windows.Forms.Panel panelDisplay;
     }
 }
 
