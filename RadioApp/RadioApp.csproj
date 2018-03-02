@@ -40,6 +40,9 @@
     <ApplicationIcon>icons8_radio_filled_32_tms_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CoreAudio">
+      <HintPath>.\CoreAudio.dll</HintPath>
+    </Reference>
     <Reference Include="Owf.Controls.DigitalDisplayControl">
       <HintPath>.\Owf.Controls.DigitalDisplayControl.dll</HintPath>
     </Reference>

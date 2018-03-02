@@ -34,6 +34,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageRadio = new System.Windows.Forms.TabPage();
+            this.pictureBoxRDS = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStereo = new System.Windows.Forms.PictureBox();
             this.checkBoxSave = new System.Windows.Forms.CheckBox();
             this.btnStation10 = new System.Windows.Forms.Button();
             this.btnStation9 = new System.Windows.Forms.Button();
@@ -46,10 +48,11 @@
             this.btnStation2 = new System.Windows.Forms.Button();
             this.btnStation1 = new System.Windows.Forms.Button();
             this.digitalDisplayFrequency = new Owf.Controls.DigitalDisplayControl();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnScanForward = new System.Windows.Forms.Button();
+            this.btnScanBack = new System.Windows.Forms.Button();
             this.lblStationName = new System.Windows.Forms.Label();
             this.trackBarFrequency = new System.Windows.Forms.TrackBar();
+            this.panelDisplay = new System.Windows.Forms.Panel();
             this.tabPageAdvanced = new System.Windows.Forms.TabPage();
             this.updateRdsControl = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
@@ -98,20 +101,20 @@
             this.checkBoxRDS = new System.Windows.Forms.CheckBox();
             this.timerInfoUpdate = new System.Windows.Forms.Timer(this.components);
             this.progressBarSQ = new System.Windows.Forms.ProgressBar();
-            this.pictureBoxStereo = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRDS = new System.Windows.Forms.PictureBox();
-            this.panelDisplay = new System.Windows.Forms.Panel();
+            this.TrackbarMaster = new System.Windows.Forms.TrackBar();
             this.tabControl.SuspendLayout();
             this.tabPageRadio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStereo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFrequency)).BeginInit();
+            this.panelDisplay.SuspendLayout();
             this.tabPageAdvanced.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorThreshold)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberSearches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scanStopQuality)).BeginInit();
             this.tabPageRDS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStereo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackbarMaster)).BeginInit();
             this.SuspendLayout();
             // 
             // signalLockCheckBox
@@ -147,8 +150,6 @@
             // 
             // tabPageRadio
             // 
-            this.tabPageRadio.Controls.Add(this.pictureBoxRDS);
-            this.tabPageRadio.Controls.Add(this.pictureBoxStereo);
             this.tabPageRadio.Controls.Add(this.checkBoxSave);
             this.tabPageRadio.Controls.Add(this.btnStation10);
             this.tabPageRadio.Controls.Add(this.btnStation9);
@@ -160,10 +161,7 @@
             this.tabPageRadio.Controls.Add(this.btnStation3);
             this.tabPageRadio.Controls.Add(this.btnStation2);
             this.tabPageRadio.Controls.Add(this.btnStation1);
-            this.tabPageRadio.Controls.Add(this.digitalDisplayFrequency);
-            this.tabPageRadio.Controls.Add(this.button2);
-            this.tabPageRadio.Controls.Add(this.button1);
-            this.tabPageRadio.Controls.Add(this.lblStationName);
+            this.tabPageRadio.Controls.Add(this.btnScanBack);
             this.tabPageRadio.Controls.Add(this.trackBarFrequency);
             this.tabPageRadio.Controls.Add(this.panelDisplay);
             this.tabPageRadio.Location = new System.Drawing.Point(4, 22);
@@ -173,115 +171,171 @@
             this.tabPageRadio.Text = "Radio";
             this.tabPageRadio.UseVisualStyleBackColor = true;
             // 
+            // pictureBoxRDS
+            // 
+            this.pictureBoxRDS.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxRDS.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRDS.Image")));
+            this.pictureBoxRDS.Location = new System.Drawing.Point(345, 0);
+            this.pictureBoxRDS.Name = "pictureBoxRDS";
+            this.pictureBoxRDS.Size = new System.Drawing.Size(41, 43);
+            this.pictureBoxRDS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRDS.TabIndex = 81;
+            this.pictureBoxRDS.TabStop = false;
+            // 
+            // pictureBoxStereo
+            // 
+            this.pictureBoxStereo.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxStereo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxStereo.Image")));
+            this.pictureBoxStereo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxStereo.InitialImage")));
+            this.pictureBoxStereo.Location = new System.Drawing.Point(395, 0);
+            this.pictureBoxStereo.Name = "pictureBoxStereo";
+            this.pictureBoxStereo.Size = new System.Drawing.Size(54, 38);
+            this.pictureBoxStereo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxStereo.TabIndex = 80;
+            this.pictureBoxStereo.TabStop = false;
+            // 
             // checkBoxSave
             // 
             this.checkBoxSave.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxSave.BackColor = System.Drawing.Color.Black;
+            this.checkBoxSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxSave.ForeColor = System.Drawing.Color.Silver;
             this.checkBoxSave.Location = new System.Drawing.Point(529, 157);
             this.checkBoxSave.Name = "checkBoxSave";
             this.checkBoxSave.Size = new System.Drawing.Size(109, 48);
             this.checkBoxSave.TabIndex = 79;
             this.checkBoxSave.Text = "Save station";
             this.checkBoxSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBoxSave.UseVisualStyleBackColor = true;
+            this.checkBoxSave.UseVisualStyleBackColor = false;
             // 
             // btnStation10
             // 
+            this.btnStation10.BackColor = System.Drawing.Color.Black;
+            this.btnStation10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation10.Location = new System.Drawing.Point(587, 119);
             this.btnStation10.Name = "btnStation10";
             this.btnStation10.Size = new System.Drawing.Size(61, 23);
             this.btnStation10.TabIndex = 78;
             this.btnStation10.Text = "10";
-            this.btnStation10.UseVisualStyleBackColor = true;
+            this.btnStation10.UseVisualStyleBackColor = false;
             this.btnStation10.Click += new System.EventHandler(this.btnStation10_Click);
             // 
             // btnStation9
             // 
+            this.btnStation9.BackColor = System.Drawing.Color.Black;
+            this.btnStation9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation9.Location = new System.Drawing.Point(519, 119);
             this.btnStation9.Name = "btnStation9";
             this.btnStation9.Size = new System.Drawing.Size(61, 23);
             this.btnStation9.TabIndex = 77;
             this.btnStation9.Text = "9";
-            this.btnStation9.UseVisualStyleBackColor = true;
+            this.btnStation9.UseVisualStyleBackColor = false;
             this.btnStation9.Click += new System.EventHandler(this.btnStation9_Click);
             // 
             // btnStation8
             // 
+            this.btnStation8.BackColor = System.Drawing.Color.Black;
+            this.btnStation8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation8.Location = new System.Drawing.Point(587, 90);
             this.btnStation8.Name = "btnStation8";
             this.btnStation8.Size = new System.Drawing.Size(61, 23);
             this.btnStation8.TabIndex = 76;
             this.btnStation8.Text = "8";
-            this.btnStation8.UseVisualStyleBackColor = true;
+            this.btnStation8.UseVisualStyleBackColor = false;
             this.btnStation8.Click += new System.EventHandler(this.btnStation8_Click);
             // 
             // btnStation7
             // 
+            this.btnStation7.BackColor = System.Drawing.Color.Black;
+            this.btnStation7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation7.Location = new System.Drawing.Point(519, 90);
             this.btnStation7.Name = "btnStation7";
             this.btnStation7.Size = new System.Drawing.Size(61, 23);
             this.btnStation7.TabIndex = 75;
             this.btnStation7.Text = "7";
-            this.btnStation7.UseVisualStyleBackColor = true;
+            this.btnStation7.UseVisualStyleBackColor = false;
             this.btnStation7.Click += new System.EventHandler(this.btnStation7_Click);
             // 
             // btnStation6
             // 
+            this.btnStation6.BackColor = System.Drawing.Color.Black;
+            this.btnStation6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation6.Location = new System.Drawing.Point(587, 61);
             this.btnStation6.Name = "btnStation6";
             this.btnStation6.Size = new System.Drawing.Size(61, 23);
             this.btnStation6.TabIndex = 74;
             this.btnStation6.Text = "6";
-            this.btnStation6.UseVisualStyleBackColor = true;
+            this.btnStation6.UseVisualStyleBackColor = false;
             this.btnStation6.Click += new System.EventHandler(this.btnStation6_Click);
             // 
             // btnStation5
             // 
+            this.btnStation5.BackColor = System.Drawing.Color.Black;
+            this.btnStation5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation5.Location = new System.Drawing.Point(519, 61);
             this.btnStation5.Name = "btnStation5";
             this.btnStation5.Size = new System.Drawing.Size(61, 23);
             this.btnStation5.TabIndex = 73;
             this.btnStation5.Text = "5";
-            this.btnStation5.UseVisualStyleBackColor = true;
+            this.btnStation5.UseVisualStyleBackColor = false;
             this.btnStation5.Click += new System.EventHandler(this.btnStation5_Click);
             // 
             // btnStation4
             // 
+            this.btnStation4.BackColor = System.Drawing.Color.Black;
+            this.btnStation4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation4.Location = new System.Drawing.Point(587, 32);
             this.btnStation4.Name = "btnStation4";
             this.btnStation4.Size = new System.Drawing.Size(61, 23);
             this.btnStation4.TabIndex = 72;
             this.btnStation4.Text = "4";
-            this.btnStation4.UseVisualStyleBackColor = true;
+            this.btnStation4.UseVisualStyleBackColor = false;
             this.btnStation4.Click += new System.EventHandler(this.btnStation4_Click);
             // 
             // btnStation3
             // 
+            this.btnStation3.BackColor = System.Drawing.Color.Black;
+            this.btnStation3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation3.Location = new System.Drawing.Point(519, 32);
             this.btnStation3.Name = "btnStation3";
             this.btnStation3.Size = new System.Drawing.Size(61, 23);
             this.btnStation3.TabIndex = 71;
             this.btnStation3.Text = "3";
-            this.btnStation3.UseVisualStyleBackColor = true;
+            this.btnStation3.UseVisualStyleBackColor = false;
             this.btnStation3.Click += new System.EventHandler(this.btnStation3_Click);
             // 
             // btnStation2
             // 
+            this.btnStation2.BackColor = System.Drawing.Color.Black;
+            this.btnStation2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation2.Location = new System.Drawing.Point(587, 3);
             this.btnStation2.Name = "btnStation2";
             this.btnStation2.Size = new System.Drawing.Size(61, 23);
             this.btnStation2.TabIndex = 70;
             this.btnStation2.Text = "2";
-            this.btnStation2.UseVisualStyleBackColor = true;
+            this.btnStation2.UseVisualStyleBackColor = false;
             this.btnStation2.Click += new System.EventHandler(this.btnStation2_Click);
             // 
             // btnStation1
             // 
+            this.btnStation1.BackColor = System.Drawing.Color.Black;
+            this.btnStation1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStation1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStation1.Location = new System.Drawing.Point(519, 3);
             this.btnStation1.Name = "btnStation1";
             this.btnStation1.Size = new System.Drawing.Size(61, 23);
             this.btnStation1.TabIndex = 69;
             this.btnStation1.Text = "1";
-            this.btnStation1.UseVisualStyleBackColor = true;
+            this.btnStation1.UseVisualStyleBackColor = false;
             this.btnStation1.Click += new System.EventHandler(this.btnStation1_Click);
             // 
             // digitalDisplayFrequency
@@ -289,51 +343,58 @@
             this.digitalDisplayFrequency.BackColor = System.Drawing.Color.Black;
             this.digitalDisplayFrequency.DigitColor = System.Drawing.Color.GreenYellow;
             this.digitalDisplayFrequency.DigitText = "088.888";
-            this.digitalDisplayFrequency.Location = new System.Drawing.Point(3, 41);
+            this.digitalDisplayFrequency.Location = new System.Drawing.Point(8, 41);
             this.digitalDisplayFrequency.Name = "digitalDisplayFrequency";
-            this.digitalDisplayFrequency.Size = new System.Drawing.Size(510, 126);
+            this.digitalDisplayFrequency.Size = new System.Drawing.Size(446, 126);
             this.digitalDisplayFrequency.TabIndex = 63;
             // 
-            // button2
+            // btnScanForward
             // 
-            this.button2.Location = new System.Drawing.Point(470, 173);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(43, 45);
-            this.button2.TabIndex = 68;
-            this.button2.Text = ">";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.scanForwards_Click);
+            this.btnScanForward.BackColor = System.Drawing.Color.Black;
+            this.btnScanForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScanForward.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnScanForward.Location = new System.Drawing.Point(411, 170);
+            this.btnScanForward.Name = "btnScanForward";
+            this.btnScanForward.Size = new System.Drawing.Size(43, 48);
+            this.btnScanForward.TabIndex = 68;
+            this.btnScanForward.Text = ">";
+            this.btnScanForward.UseVisualStyleBackColor = false;
+            this.btnScanForward.Click += new System.EventHandler(this.scanForwards_Click);
             // 
-            // button1
+            // btnScanBack
             // 
-            this.button1.Location = new System.Drawing.Point(3, 173);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 45);
-            this.button1.TabIndex = 67;
-            this.button1.Text = "<";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.scanBackwards_Click);
+            this.btnScanBack.BackColor = System.Drawing.Color.Black;
+            this.btnScanBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScanBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnScanBack.Location = new System.Drawing.Point(3, 173);
+            this.btnScanBack.Name = "btnScanBack";
+            this.btnScanBack.Size = new System.Drawing.Size(43, 45);
+            this.btnScanBack.TabIndex = 67;
+            this.btnScanBack.Text = "<";
+            this.btnScanBack.UseVisualStyleBackColor = false;
+            this.btnScanBack.Click += new System.EventHandler(this.scanBackwards_Click);
             // 
             // lblStationName
             // 
             this.lblStationName.BackColor = System.Drawing.Color.Black;
             this.lblStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblStationName.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lblStationName.Location = new System.Drawing.Point(23, 0);
+            this.lblStationName.Location = new System.Drawing.Point(3, 0);
             this.lblStationName.Name = "lblStationName";
-            this.lblStationName.Size = new System.Drawing.Size(343, 43);
+            this.lblStationName.Size = new System.Drawing.Size(336, 43);
             this.lblStationName.TabIndex = 2;
             this.lblStationName.Text = "Station name";
             this.lblStationName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // trackBarFrequency
             // 
+            this.trackBarFrequency.BackColor = System.Drawing.Color.Black;
             this.trackBarFrequency.LargeChange = 100;
             this.trackBarFrequency.Location = new System.Drawing.Point(52, 173);
             this.trackBarFrequency.Maximum = 108000;
             this.trackBarFrequency.Minimum = 87500;
             this.trackBarFrequency.Name = "trackBarFrequency";
-            this.trackBarFrequency.Size = new System.Drawing.Size(412, 45);
+            this.trackBarFrequency.Size = new System.Drawing.Size(353, 45);
             this.trackBarFrequency.SmallChange = 50;
             this.trackBarFrequency.TabIndex = 0;
             this.trackBarFrequency.TickFrequency = 1000;
@@ -341,6 +402,20 @@
             this.trackBarFrequency.Scroll += new System.EventHandler(this.trackBarFrequency_Scroll);
             this.trackBarFrequency.ValueChanged += new System.EventHandler(this.trackBarFrequency_ValueChanged);
             this.trackBarFrequency.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBarFrequency_MouseUp);
+            // 
+            // panelDisplay
+            // 
+            this.panelDisplay.BackColor = System.Drawing.Color.Black;
+            this.panelDisplay.Controls.Add(this.TrackbarMaster);
+            this.panelDisplay.Controls.Add(this.pictureBoxStereo);
+            this.panelDisplay.Controls.Add(this.pictureBoxRDS);
+            this.panelDisplay.Controls.Add(this.lblStationName);
+            this.panelDisplay.Controls.Add(this.digitalDisplayFrequency);
+            this.panelDisplay.Controls.Add(this.btnScanForward);
+            this.panelDisplay.Location = new System.Drawing.Point(0, 0);
+            this.panelDisplay.Name = "panelDisplay";
+            this.panelDisplay.Size = new System.Drawing.Size(651, 221);
+            this.panelDisplay.TabIndex = 82;
             // 
             // tabPageAdvanced
             // 
@@ -367,7 +442,7 @@
             this.tabPageAdvanced.Location = new System.Drawing.Point(4, 22);
             this.tabPageAdvanced.Name = "tabPageAdvanced";
             this.tabPageAdvanced.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAdvanced.Size = new System.Drawing.Size(651, 221);
+            this.tabPageAdvanced.Size = new System.Drawing.Size(657, 221);
             this.tabPageAdvanced.TabIndex = 0;
             this.tabPageAdvanced.Text = "Advanced";
             this.tabPageAdvanced.UseVisualStyleBackColor = true;
@@ -654,7 +729,7 @@
             this.tabPageRDS.Location = new System.Drawing.Point(4, 22);
             this.tabPageRDS.Name = "tabPageRDS";
             this.tabPageRDS.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRDS.Size = new System.Drawing.Size(651, 221);
+            this.tabPageRDS.Size = new System.Drawing.Size(657, 221);
             this.tabPageRDS.TabIndex = 1;
             this.tabPageRDS.Text = "RDS";
             this.tabPageRDS.UseVisualStyleBackColor = true;
@@ -852,42 +927,25 @@
             this.progressBarSQ.Size = new System.Drawing.Size(122, 17);
             this.progressBarSQ.TabIndex = 63;
             // 
-            // pictureBoxStereo
+            // TrackbarMaster
             // 
-            this.pictureBoxStereo.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxStereo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxStereo.Image")));
-            this.pictureBoxStereo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxStereo.InitialImage")));
-            this.pictureBoxStereo.Location = new System.Drawing.Point(435, 3);
-            this.pictureBoxStereo.Name = "pictureBoxStereo";
-            this.pictureBoxStereo.Size = new System.Drawing.Size(54, 38);
-            this.pictureBoxStereo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxStereo.TabIndex = 80;
-            this.pictureBoxStereo.TabStop = false;
-            // 
-            // pictureBoxRDS
-            // 
-            this.pictureBoxRDS.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxRDS.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRDS.Image")));
-            this.pictureBoxRDS.Location = new System.Drawing.Point(388, 0);
-            this.pictureBoxRDS.Name = "pictureBoxRDS";
-            this.pictureBoxRDS.Size = new System.Drawing.Size(41, 43);
-            this.pictureBoxRDS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxRDS.TabIndex = 81;
-            this.pictureBoxRDS.TabStop = false;
-            // 
-            // panelDisplay
-            // 
-            this.panelDisplay.BackColor = System.Drawing.Color.Black;
-            this.panelDisplay.Location = new System.Drawing.Point(0, 0);
-            this.panelDisplay.Name = "panelDisplay";
-            this.panelDisplay.Size = new System.Drawing.Size(513, 167);
-            this.panelDisplay.TabIndex = 82;
+            this.TrackbarMaster.LargeChange = 20;
+            this.TrackbarMaster.Location = new System.Drawing.Point(465, 3);
+            this.TrackbarMaster.Maximum = 100;
+            this.TrackbarMaster.Name = "TrackbarMaster";
+            this.TrackbarMaster.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.TrackbarMaster.Size = new System.Drawing.Size(45, 212);
+            this.TrackbarMaster.SmallChange = 5;
+            this.TrackbarMaster.TabIndex = 82;
+            this.TrackbarMaster.TickFrequency = 10;
+            this.TrackbarMaster.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.TrackbarMaster.Scroll += new System.EventHandler(this.TrackbarMaster_Scroll);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 281);
+            this.ClientSize = new System.Drawing.Size(657, 281);
             this.Controls.Add(this.progressBarSQ);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.signalLockCheckBox);
@@ -903,7 +961,11 @@
             this.tabControl.ResumeLayout(false);
             this.tabPageRadio.ResumeLayout(false);
             this.tabPageRadio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStereo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFrequency)).EndInit();
+            this.panelDisplay.ResumeLayout(false);
+            this.panelDisplay.PerformLayout();
             this.tabPageAdvanced.ResumeLayout(false);
             this.tabPageAdvanced.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorThreshold)).EndInit();
@@ -913,8 +975,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.scanStopQuality)).EndInit();
             this.tabPageRDS.ResumeLayout(false);
             this.tabPageRDS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStereo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackbarMaster)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -973,8 +1034,8 @@
         private System.Windows.Forms.CheckBox checkBoxPlayStop;
         private System.Windows.Forms.CheckBox checkBoxRDS;
         private System.Windows.Forms.Label lblStationName;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnScanForward;
+        private System.Windows.Forms.Button btnScanBack;
         private System.Windows.Forms.Timer timerInfoUpdate;
         private Owf.Controls.DigitalDisplayControl digitalDisplayFrequency;
         private System.Windows.Forms.CheckBox checkBoxSave;
@@ -992,6 +1053,7 @@
         private System.Windows.Forms.PictureBox pictureBoxStereo;
         private System.Windows.Forms.PictureBox pictureBoxRDS;
         private System.Windows.Forms.Panel panelDisplay;
+        private System.Windows.Forms.TrackBar TrackbarMaster;
     }
 }
 

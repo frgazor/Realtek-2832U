@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using RadioLib;
+using CoreAudio;
 
 namespace RadioApp
 {
     public partial class Form1 : Form
     {
+        private MMDevice device;
         private FmRadioGraph fmRadioGraph;
         private FmRadio controller;
 
@@ -20,6 +22,11 @@ namespace RadioApp
         public Form1()
         {
             InitializeComponent();
+
+            MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
+            device = DevEnum.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+            TrackbarMaster.Value = (int)(device.AudioEndpointVolume.MasterVolumeLevelScalar * 100);
+            device.AudioEndpointVolume.OnVolumeNotification += new AudioEndpointVolumeNotificationDelegate(AudioEndpointVolume_OnVolumeNotification);
             try
             {
                 pictureBoxStereo.Visible = false;
@@ -527,6 +534,25 @@ namespace RadioApp
                 trackBarFrequency.Value = Properties.Settings.Default.station10;
                 setFrequencyLabel();
             }
+        }
+
+        void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
+        {
+            if (this.InvokeRequired)
+            {
+                object[] Params = new object[1];
+                Params[0] = data;
+                this.Invoke(new AudioEndpointVolumeNotificationDelegate(AudioEndpointVolume_OnVolumeNotification), Params);
+            }
+            else
+            {
+                TrackbarMaster.Value = (int)(data.MasterVolume * 100);
+            }
+        }
+
+        private void TrackbarMaster_Scroll(object sender, EventArgs e)
+        {
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = ((float)TrackbarMaster.Value / 100.0f);
         }
     }
 }
