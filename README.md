@@ -2,3 +2,5 @@
 Simple FM Radio App based on example from C# wrapper around the Realtek 2832U driver
 
 for windows 7+ and original realtek drivers
+
+![alt text](RadioApp/screenshot.png "Radio App screenshot")
